@@ -1,0 +1,45 @@
+<{/*引入头部*/}>
+ <include file="./meishi/Tpl/Public/header.html" />
+
+<div style="width:980px;text-align:left;margin-bottom:5px;">
+		<div class="dis_css bor3">
+			<div class="list_title">
+				<span><a href="">首页&nbsp;&gt;</a>
+
+					<{$foodsort['0']['name']}></span>
+			</div>
+			<div class="list_line"></div>
+
+			<div class="list_block">
+
+			<volist name="foodmore" id="vo">
+				<div class="ah_display_f list_display">
+					<div class="ah_dis_f" style="float:left;">
+					<a href="__URL__/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>"><img src="__IPUBLIC__/s_<{$vo['image']}>"></a>
+					<div class="ah_dis_t1"><{$vo['name']}></div>
+					</div>
+				</div>
+			</volist>
+
+			</div>
+			<div class="clear"></div>
+			<div style="padding-left:150px;" class="ser_page1">
+				<div>
+					<{$page}>
+
+				</div>
+			</div>
+		</div>
+	<!--右侧-->
+		<div class="r">
+			<div style="margin-top:0px;" class="addt"><img src="__TPUBLIC__/image/ad_11.gif"></div>
+			<div class="addt"><img src="__TPUBLIC__/image/dazhe3.gif"></div>
+			<div class="addt"><img src="__TPUBLIC__/image/dazhe4.gif"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+
+
+
+  <{/*引入页脚*/}>
+ <include file="./meishi/Tpl/Public/footer.html" />

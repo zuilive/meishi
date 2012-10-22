@@ -1,0 +1,428 @@
+<{/*引入头部*/}>
+ <include file="./meishi/Tpl/Public/header.html" />
+
+ 	<script language="javascript" type="text/javascript" src="__TPUBLIC__/js/jquery-1.4.4.min.js"></script>
+    <script language="javascript" type="text/javascript" src="__TPUBLIC__/js/jquery.smallslider.js"></script>
+    <script language="javascript" type="text/javascript" src="__TPUBLIC__/js/dedeajax2.js"></script>
+    <script>
+	$(document).ready(function() {
+		$(function(){
+			$('#slide').smallslider({
+				time:3000,
+				onImageStop:true,
+				switchTime:1000,
+				textSwitch:2,
+				switchMode:'click',
+				switchEffect:'ease'
+			});
+			$('#slide2').smallslider({
+				time:3000,
+				onImageStop:true,
+				switchTime:1000,
+				textSwitch:2,
+				switchMode:'click',
+				switchEffect:'ease'
+			});
+
+			$('#slide3').smallslider({
+				time:3000,
+				onImageStop:true,
+				switchTime:1000,
+				textSwitch:2,
+				switchMode:'click',
+				switchEffect:'ease'
+			});
+
+			$('#slide4').smallslider({
+				time:3000,
+				onImageStop:true,
+				switchTime:1000,
+				textSwitch:2,
+				switchMode:'click',
+				switchEffect:'ease'
+			});
+			/*
+			*安徽美食点击切换DIV事件
+			*同时切换标签样式
+			*
+			**/
+			$('.m_food img').height("66px").width("70px");
+			$('.b_info img').height("170px").width("170px");
+			$('.c_img img').height("90px").width("125px");
+			$('.info img').height("90px").width("90px");
+
+			$('#m_menu a:eq(0)').mouseover(function(){
+				$('#m_menu a').removeClass('act');
+				$(this).addClass('act');
+				$('.m_food').hide();
+				$('.m_food:eq(0)').show();
+			})
+			$('#m_menu a:eq(1)').mouseover(function(){
+				$('#m_menu a').removeClass('act');
+				$(this).addClass('act');
+				$('.m_food').hide();
+				$('.m_food:eq(1)').show();
+			})
+			$('#m_menu a:eq(2)').mouseover(function(){
+				$('#m_menu a').removeClass('act');
+				$(this).addClass('act');
+				$('.m_food').hide();
+				$('.m_food:eq(2)').show();
+			})
+			/**
+			 *查询事件
+			*/
+			$('form input').focus(function(){this.value = ""});
+
+
+			$(function($) {
+			function ScrollAction(listObj, listElem, speed, isSeries) { //listObj为需要滚动的列表， speed为滚动速度
+				var pos, top, aniTop, height;
+				var id = ''; //记录setInterval的标记id
+				pos = listObj.position();
+				top = pos.top; //列表的top
+				aniTop = top; //记录当前运动时的top
+				height = listObj.height(); //列表的高度
+				var scrollUp = function() {
+					aniTop--;
+					if(!isSeries) { //isSeries变量控制是否连续滚动，false不连续，true连续
+						if(aniTop == -height) { //不连续，滚动玩重新滚动
+							listObj.css({'top': top});
+							aniTop = top;
+						};
+					} else {
+						if(aniTop == -listObj.children().eq(0).height()) { //连续滚动
+							var firstItem = '<' + listElem +'>' + listObj.children().eq(0).html() + '</' + listElem +'>';
+							listObj.children().eq(0).remove();
+							listObj.append(firstItem);
+							aniTop = 4;
+						};
+					};
+					listObj.css({'top': aniTop + 'px'});
+				};
+				var hover = function(id) {
+					listObj.hover(function() {
+						clearInterval(id);
+					}, function() {
+						id = setInterval(scrollUp, speed);
+					});
+				};
+				this.start = function() {
+					id = setInterval(scrollUp, speed);
+					hover(id);
+				};
+				};
+				var sa = new ScrollAction($('.noticeList'), 'li', 40, true);
+				sa.start();
+			});
+		});
+    });
+</script>
+
+		<div class="food_second ">
+		    <div  class="left bor" style="height: 337px;_height:344px;">
+			    <div style="margin:2px;">
+				<div id="slide" class="smallslider">
+                	<ul>
+                	<volist name="foodlist" id="vo">
+                    	<li><a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>"><img src="__IPUBLIC__/s_<{$vo['image']}>" alt="<{$vo['name']}>"/></a></li>
+					</volist>
+                    </ul>
+
+				</div>
+				<div class="clear"></div>
+                </div>
+				<div class="food_fw"><img src="__TPUBLIC__/image/title.png"/>服务大厅</div>
+				<div >
+				    <img src="__TPUBLIC__/image/title2.png" border="0" usemap="#planetmap">
+				    <map name="planetmap" id="planetmap">
+					    <area href ="/example/html/1.html" target ="_blank" coords="0,0,59,78" >
+						<area href ="/example/html/2.html" target ="_blank" coords="59,0,117,78" >
+						<area href ="/example/html/3.html" target ="_blank" coords="117,0,176,78" >
+						<area href ="/example/html/4.html" target ="_blank" coords="176,0,235,78" >
+						<area href ="/example/html/5.html" target ="_blank" coords="235,0,294,78" >
+					</map>
+				</div>
+			</div>
+			<div class="left bor" style="margin:0px 5px;width:407px">
+			    <div class="title1" >
+				    <a href="__APP__/service/show?id=<{$listnew['0']['id']}>"><h3><{$listnew['0']['title']}></h3></a>
+					<div class="content"><{$listnew['0']['content']}></div>
+				</div>
+				<div class="biaoti">
+				    <div>==</div><a href="">安徽名菜</a><div>==</div>
+                    <div>==</div><a href="" class="b">安徽小吃</a><div>==</div>
+                    <div>==</div><a href="" class="c">安徽土产</a><div>==</div>
+					<span class="clear"></span>
+				</div>
+				<div style="padding-top: 10px;display:block" class="m_food">
+					<volist name="ahlist" id="vo">
+				    <div class="display" >
+					    <div class="bor"><img width="77" height="77" src="__IPUBLIC__/m_<{$vo['image']}>"></div>
+						<div><a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>"><{$vo['name']}></a></div>
+					</div>
+					</volist>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div style="float:left">
+			    <div class="bor" style="height:221px;width: 250px;background-color:#FFFFF8;_height:218px;">
+				    <div style="color:#00669A;font-weight: 900;margin-top:7px;margin-bottom: 5px;font-size:13px"><img src="__TPUBLIC__/image/dazhe1.gif" style="margin:7px 10px 0px 10px;">打折优惠</div>
+					<div id="y_info">
+                      <ul class="noticeList">
+
+                          <li><img src="__TPUBLIC__/image/dazhe2.gif" style="margin:7px 10px 0px 10px;"><a href="#">香辣盛宴干锅主题酒店优惠劵1</a></li>
+                          <li><img src="__TPUBLIC__/image/dazhe2.gif" style="margin:7px 10px 0px 10px;"><a href="#">香辣盛宴干锅主题酒店优惠劵2</a></li>
+                          <li><img src="__TPUBLIC__/image/dazhe2.gif" style="margin:7px 10px 0px 10px;"><a href="#">香辣盛宴干锅主题酒店优惠劵3</a></li>
+                          <li><img src="__TPUBLIC__/image/dazhe2.gif" style="margin:7px 10px 0px 10px;"><a href="#">香辣盛宴干锅主题酒店优惠劵4</a></li>
+                          <li><img src="__TPUBLIC__/image/dazhe2.gif" style="margin:7px 10px 0px 10px;"><a href="#">香辣盛宴干锅主题酒店优惠劵5</a></li>
+                          <li><img src="__TPUBLIC__/image/dazhe2.gif" style="margin:7px 10px 0px 10px;"><a href="#">香辣盛宴干锅主题酒店优惠劵6</a></li>
+                          <li><img src="__TPUBLIC__/image/dazhe2.gif" style="margin:7px 10px 0px 10px;"><a href="#">香辣盛宴干锅主题酒店优惠劵7</a></li>
+                          <li><img src="__TPUBLIC__/image/dazhe2.gif" style="margin:7px 10px 0px 10px;"><a href="#">香辣盛宴干锅主题酒店优惠劵8</a></li>
+                      </ul>
+					</div>
+
+				</div>
+				<div style="margin-top:4px" class="bor"><img src="__TPUBLIC__/image/dazhe3.gif"></div>
+				<div style="margin-top:4px" class="bor"><img src="__TPUBLIC__/image/dazhe4.gif"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<div class="fd_third" style="margin-top:5px;">
+		    <div  class="block_first">
+			    <div class="back_ground">
+				<div class="left ipad" ><img src="__TPUBLIC__/image/xindian.gif" style="margin: 7px 7px 0px 7px;">最新加盟</div>
+				<div class="right href"> <a href="http://51googo.com/pc/index.php?m=content&c=index&a=lists&catid=9">更多</a></div>
+				<div class="clear"></div>
+				</div>
+				<div>
+					<{/*滁州新开店信息*/}>
+					<volist name="listcz" id="vo">
+					    <div class="display2" >
+						    <div class="bor"><img src="<{$imgcz["$i"]}>"></div>
+							<div><a href="<{$vo['url']}>"><{$vo['title']}></a></div>
+						</div>
+					</volist>
+
+					<{/*全椒新开店信息
+					<volist name="listqj" id="vo">
+					    <div class="display2" >
+						    <div class="bor"><img src="<{$imgqj["$i"]}>"></div>
+							<div><a href="<{$vo['url']}>"><{$vo['title']}></a></div>
+						</div>
+					</volist>*/}>
+				</div>
+			</div>
+
+			<div class="block_second">
+			    <div class="back_ground" >
+				<div class="left ipad" ><img src="__TPUBLIC__/image/xjjd.gif" style="margin: 7px 7px 0px 7px;">星级酒店-宾馆</div>
+				<div class="right href"> <a href="http://51googo.com/pc/index.php?m=content&c=index&a=lists&catid=13">更多</a></div>
+				<div class="clear"></div>
+				</div>
+				<div>
+				<{/*滁州宾馆信息*/}>
+				<volist name="listcz13" id="vo">
+				    <div class="display2" >
+					    <div class="bor"><img src="<{$imgcz13["$i"]}>"></div>
+						<div><a href="<{$vo['url']}>"><{$vo['title']}></a></div>
+					</div>
+				</volist>
+
+				<{/*全椒宾馆信息*/}>
+				<volist name="listqj13" id="vo">
+				    <div class="display2" >
+					    <div class="bor"><img src="<{$imgqj13["$i"]}>"></div>
+						<div><a href="<{$vo['url']}>"><{$vo['title']}></a></div>
+					</div>
+				</volist>
+
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	<div class="ah_title"><img src="__TPUBLIC__/image/1f.gif"></div>
+	<div style="height:330px;margin-top: 5px;" class="bor1">
+		<div style="float:left">
+			<div style="margin:2px;">
+				<div id="slide4" class="smallslider" style="height:326px;width:280px;">
+                	<ul>
+
+                		<{/*安徽美食页，左侧展示幻灯片*/}>
+                		<volist name="mingcai" id="vo" offset="0" length="5" >
+                    		<li><a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>"><img src="__IPUBLIC__/s_<{$vo['image']}>" style="height:326px;width:280px;" alt="<{$vo['name']}>"/></a></li>
+		           		</volist>
+                    </ul>
+
+				</div>
+				<div class="clear"></div>
+                </div>
+		</div>
+		<div style="width:486px;float:left;margin-top: 2px;">
+
+		<{/*安徽美食页，幻灯片右侧展示图*/}>
+		<volist name="mingcai" id="vo" offset="5" length="6">
+			<div class="ah_display_f">
+				<div style="float:left;" class="ah_dis_f">
+					<a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>"><img src="__IPUBLIC__/s_<{$vo['image']}>"></a>
+					<div class="ah_dis_t"><{$vo['name']}></div>
+				</div>
+			</div>
+		</volist>
+
+		<div class="clear"></div>
+		</div>
+		<div style="float:left;margin:2px 1px 0px 0px;text-align:left;">
+			<a href="__APP__/meishi/more?pid=<{$pmingcai['0']['pid']}>" class="ah_list_title">
+			<span style="padding-left:15px;font-size:15px;">热门安徽名菜排行</span>
+			<span>更多</span>
+			</a>
+
+			<{/*安徽美食页，右侧排行榜*/}>
+			<volist name="pmingcai" id="vo" offset="0" length="3">
+			<a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>" class="ah_list_img" >
+				<div class="ah_list_b" style="top:17px"><{$i}></div>
+				<div style="float:left"><img src="__IPUBLIC__/m_<{$vo['image']}>"> </div>
+				<div class="ah_list_nt" ><{$vo['name']}></div>
+				<div class="clear"></div>
+			</a>
+			</volist>
+
+			<volist name="pmingcai" id="vo" offset="3" length="4">
+			<a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>" class="ah_list_bor">
+				<div class="ah_list_b"><{$i+3}></div>
+				<div class="ah_list_nts" ><{$vo['name']}></div>
+				<div class="clear"></div>
+			</a>
+			</volist>
+
+		</div>
+	</div>
+
+	<div class="bor1" style="margin-top:5px;">
+			<img src="__TPUBLIC__/image/ad1.png" style="margin:1px;width:976px;">
+		</div>
+
+		<div class="ah_title"><img src="__TPUBLIC__/image/2f.gif"></div>
+	<div style="height:330px;margin-top: 5px;" class="bor1">
+		<div style="float:left">
+			<div style="margin:2px;">
+				<div id="slide2" class="smallslider" style="height:326px;width:280px;">
+                	<ul>
+                		<{/*安徽小吃，幻灯片*/}>
+                		<volist name="xiaochi" id="vo" offset="0" length="5">
+                    	<li><a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>"><img src="__IPUBLIC__/s_<{$vo['image']}>" style="height:326px;width:280px;" alt="<{$vo['name']}>"/></a></li>
+                 		</volist>
+                   </ul>
+
+				</div>
+				<div class="clear"></div>
+                </div>
+		</div>
+		<div style="width:486px;float:left;margin-top: 2px;">
+
+		<{/*安徽小吃，幻灯片右侧图片展示*/}>
+		<volist name="xiaochi" id="vo" offset="5" length="6">
+		<div class="ah_display_f">
+			<div style="float:left;" class="ah_dis_f">
+				<a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>"><img src="__IPUBLIC__/s_<{$vo['image']}>"></a>
+				<div class="ah_dis_t"><{$vo['name']}></div>
+			</div>
+		</div>
+		</volist>
+		<div class="clear"></div>
+		</div>
+		<div style="float:left;margin:2px 1px 0px 0px;text-align:left;">
+			<a href="__APP__/meishi/more?pid=<{$pxiaochi['0']['pid']}>" class="ah_list_title">
+			<span style="padding-left:15px;font-size:15px;">热门安徽小吃排行</span>
+			<span>更多</span>
+			</a>
+
+			<{/*安徽小吃，右侧排行*/}>
+			<volist name="pxiaochi" id="vo" offset="0" length="3">
+				<a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>" class="ah_list_img" >
+					<div class="ah_list_b" style="top:17px"><{$i}></div>
+					<div style="float:left"><img src="__IPUBLIC__/m_<{$vo['image']}>"> </div>
+					<div class="ah_list_nt" ><{$vo['name']}></div>
+					<div class="clear"></div>
+				</a>
+			</volist>
+
+			<volist name="pxiaochi" id="vo" offset="3" length="4">
+				<a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>" class="ah_list_bor">
+					<div class="ah_list_b"><{$i+3}></div>
+					<div class="ah_list_nts" ><{$vo['name']}></div>
+					<div class="clear"></div>
+				</a>
+			</volist>
+
+		</div>
+	</div>
+
+	<div class="bor1" style="margin-top:5px;">
+			<img src="__TPUBLIC__/image/ad1.png" style="margin:1px;width:976px;">
+		</div>
+		<div class="ah_title"><img src="__TPUBLIC__/image/3f.gif"></div>
+	<div style="height:330px;margin-top: 5px;" class="bor1">
+		<div style="float:left">
+			<div style="margin:2px;">
+				<div id="slide3" class="smallslider" style="height:326px;width:280px;">
+                	<ul>
+
+                		<{/*徽味土产，幻灯片*/}>
+                		<volist name="tuchan" id="vo" offset="0" length="5">
+                    		<li><a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>"><img src="__IPUBLIC__/s_<{$vo['image']}>" style="height:326px;width:280px;" alt="<{$vo['name']}>"/></a></li>
+						</volist>
+                    </ul>
+
+				</div>
+				<div class="clear"></div>
+                </div>
+		</div>
+		<div style="width:486px;float:left;margin-top: 2px;">
+
+		<{/*徽味土产，幻灯片右侧的图片展示*/}>
+		<volist name="tuchan" id="vo" offset="5" length="6">
+			<div class="ah_display_f">
+				<div style="float:left;" class="ah_dis_f">
+					<a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>"><img src="__IPUBLIC__/s_<{$vo['image']}>"></a>
+					<div class="ah_dis_t"><{$vo['name']}></div>
+				</div>
+			</div>
+		</volist>
+		<div class="clear"></div>
+		</div>
+		<div style="float:left;margin:2px 1px 0px 0px;text-align:left;">
+			<a href="__APP__/meishi/more?pid=<{$ptuchan['0']['pid']}>" class="ah_list_title">
+			<span style="padding-left:15px;font-size:15px;">热门徽味土产排行</span>
+			<span>更多</span>
+			</a>
+
+			<{/*徽味土产，右侧排行*/}>
+			<volist name="ptuchan" id="vo" offset="0" length="3">
+				<a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>" class="ah_list_img" >
+					<div class="ah_list_b" style="top:17px"><{$i}></div>
+					<div style="float:left"><img src="__IPUBLIC__/m_<{$vo['image']}>"> </div>
+					<div class="ah_list_nt" ><{$vo['name']}></div>
+					<div class="clear"></div>
+				</a>
+			</volist>
+
+			<volist name="ptuchan" id="vo" offset="3" length="4">
+				<a href="__APP__/meishi/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>" class="ah_list_bor">
+					<div class="ah_list_b"><{$i+3}></div>
+					<div class="ah_list_nts" ><{$vo['name']}></div>
+					<div class="clear"></div>
+				</a>
+			</volist>
+		</div>
+	</div>
+
+	<div class="bor1" style="margin-top:5px;">
+			<img src="__TPUBLIC__/image/ad1.png" style="margin:1px;width:976px;">
+		</div>
+
+<{/*引入页脚*/}>
+ <include file="./meishi/Tpl/Public/footer.html" />

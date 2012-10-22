@@ -1,0 +1,48 @@
+ <{/*引入头部*/}>
+ <include file="./admin/Tpl/Public/header.html" />
+        <div id="containerHolder">
+			<div id="container">
+        		<div id="sidebar">
+                	<ul class="sideNav">
+
+                    	<li><a href="#" class="<{$linkactive}>">友情链接</a></li>
+
+                    </ul>
+                    <!-- // .sideNav -->
+                </div>
+                <!-- // #sidebar -->
+
+                <!-- h2 stays for breadcrumbs -->
+                <h2><a href="#">运营</a> &raquo; <a href="#" class="active">友情链接</a></h2>
+
+                <div id="main">
+
+					<h3>管理友情链接</h3>
+                    	<table cellpadding="0" cellspacing="0">
+                    		<volist name="listlink" id="vo">
+							<tr <if condition="$i%2 eq 0">class="odd"</if>>
+                                <td><{$vo['name']}></td>
+                                <td class="action"><a href="__URL__/?id=<{$vo['id']}>" class="edit">编辑</a><a href="__URL__/del?id=<{$vo['id']}>" class="delete">删除</a></td>
+                            </tr>
+							</volist>
+                        </table>
+					<h3>添加/编辑友情链接</h3>
+					<form action="__URL__/add" class="jNice" method="POST">
+                    	<fieldset>
+                        	<p><label>链接名:</label><input type="text" class="text-long" name="name" value="<{$lk['0']['name']}>"/></p>
+                        	<p><label>链接地址:</label><input type="text" class="text-long" name="url" value="<{$lk['0']['url']}>" />要带上"http://"</p>
+
+                            <input type="submit" value="提交" />
+                        </fieldset>
+                    </form>
+
+                </div>
+                <!-- // #main -->
+
+                <div class="clear"></div>
+            </div>
+            <!-- // #container -->
+        </div>
+
+ <{/*引入页脚*/}>
+ <include file="./admin/Tpl/Public/footer.html" />

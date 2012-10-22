@@ -1,0 +1,38 @@
+ <{/*引入头部*/}>
+ <include file="./admin/Tpl/Public/header.html" />
+ <div id="containerHolder">
+			<div id="container">
+        		<div id="sidebar">
+					<include file="./admin/Tpl/Public/servicesider.html" />
+                    <!-- // .sideNav -->
+                </div>
+                <!-- // #sidebar -->
+
+                <!-- h2 stays for breadcrumbs -->
+                <h2><a href="#">服务大厅管理</a> » <a class="active" href="#">新闻管理</a></h2>
+
+                <div id="main">
+
+					<h3></h3>
+                    	<table cellspacing="0" cellpadding="0">
+							<tbody>
+							<volist name="list" id="vo">
+							<tr <if condition="$i%2 eq 0">class="odd"</if>>
+                                <td><{$vo.title}></td>
+                                <td class="action"><a href="/meishi/index.php/service/show?id=<{$vo['id']}>" class="view" target="_black">查看</a><a class="edit" href="__URL__/?id=<{$vo.id}>">编辑</a><a class="delete" href="__URL__/del/?id=<{$vo.id}>">删除</a></td>
+                            </tr>
+                            </volist>
+
+                        </tbody></table>
+                        <span style="line-height:34px;float:right;font-size:14px;" class="page"><{$page}></span>
+                </div>
+                <!-- // #main -->
+
+                <div class="clear"></div>
+            </div>
+            <!-- // #container -->
+        </div>
+
+
+   <{/*引入页脚*/}>
+ <include file="./admin/Tpl/Public/footer.html" />

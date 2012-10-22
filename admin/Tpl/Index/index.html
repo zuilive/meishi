@@ -1,0 +1,30 @@
+<{/*引入头部*/}>
+ <include file="./admin/Tpl/Public/header.html" />
+<div id="containerHolder">
+			<div id="container">
+        		<div id="sidebar">
+					<include file="./admin/Tpl/Public/indexsider.html" />
+                    <!-- // .sideNav -->
+                </div>
+                <!-- // #sidebar -->
+
+                <!-- h2 stays for breadcrumbs -->
+                <h2><a href="#">首页</a> » <a class="active" href="#">系统信息</a></h2>
+
+                <div id="main">
+                	<h3></h3>
+                	<volist name="info" id="info">
+					<{$key}>:&nbsp;&nbsp;<{$info}><br><br>
+					</volist>
+                </div>
+                <!-- // #main -->
+
+                <div class="clear"></div>
+            </div>
+            <!-- // #container -->
+        </div>
+
+
+
+ <{/*引入页脚*/}>
+ <include file="./admin/Tpl/Public/footer.html" />

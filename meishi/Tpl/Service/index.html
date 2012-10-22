@@ -1,0 +1,48 @@
+<{/*引入头部*/}>
+ <include file="./meishi/Tpl/Public/header.html" />
+
+	<div style="width:980px;text-align:left">
+		<div class="bor1" style="margin:5px 0px;">
+			<img src="__TPUBLIC__/image/ad1.png" style="margin:1px;width:976px;">
+		</div>
+
+	<!--右侧-->
+		<div class="r serr">
+		<volist name="list" id="vo">
+			<div class="ser_dis"><a href="__URL__/show?id=<{$vo['id']}>"><{$vo['title']}></a><span>2012-10-11</span></div>
+		</volist>
+			<div class="clear"></div>
+			<div class="ser_page">
+				<div>
+				<!--
+					<a href="">上一页</a>
+					<a href="" class="ser_on">1</a>
+					<a href="">2</a>
+					<a href="">3</a>
+					<a href="">4</a>
+					<a href="">5</a>
+					<a style="border:0px;">……</a>
+					<a href="">下一页</a>-->
+
+				<{$page}>
+
+				</div>
+			</div>
+		</div>
+		<!--左侧-->
+		<div class="l ser">
+			<div style="height:44px;"></div>
+			<div  class="ser1"><a href="__URL__/?id=1"></a></div>
+			<div  class="ser2"><a href="__URL__/?id=2"></a></div>
+			<div  class="ser3"><a href="__URL__/?id=3"></a></div>
+			<div  class="ser4"><a href="__URL__/?id=4"></a></div>
+			<div  class="ser5"><a href="__URL__/?id=5"></a></div>
+		</div>
+	<div class="clear"></div>
+	<div class="bor1" style="margin:5px 0px;">
+			<img src="__TPUBLIC__/image/ad1.png" style="margin:1px;width:976px;">
+		</div>
+	</div>
+
+ <{/*引入页脚*/}>
+ <include file="./meishi/Tpl/Public/footer.html" />

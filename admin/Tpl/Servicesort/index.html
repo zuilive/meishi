@@ -1,0 +1,68 @@
+ <{/*引入头部*/}>
+ <include file="./admin/Tpl/Public/header.html" />
+ <div id="containerHolder">
+			<div id="container">
+        		<div id="sidebar">
+                	<include file="./admin/Tpl/Public/servicesider.html" />
+                    <!-- // .sideNav -->
+                </div>
+                <!-- // #sidebar -->
+
+                <!-- h2 stays for breadcrumbs -->
+                <h2><a href="#">服务大厅管理</a> » <a class="active" href="#">栏目管理</a></h2>
+
+                <div id="main">
+                	<form class="jNice" action="__URL__/add" method="POST">
+					<h3>添加栏目</h3>
+
+                    	<fieldset>
+                        	<p><label>添加栏目的名称:</label><input type="text" class="text-long" name="name"></p>
+
+                            <button class="" type="submit" name="" id=""><span><span>添加</span></span></button>
+                        </fieldset>
+                    </form>
+
+                    <form class="jNice" action="__URL__/del" method="POST">
+                    	<h3>删除栏目</h3>
+                    	<fieldset>
+                    		<p><label>选择要删除的栏目:</label>
+                    		<select name="id" size="1">
+								<volist name="alist" id="vo">
+									<option value="<{$vo['id']}>">
+									<{$vo['name']}></option>
+								</volist>
+							</select>
+                    		</p>
+                    	<button class="" type="submit" name="" id=""><span><span>删除</span></span></button>
+
+                    	</fieldset>
+                    </form>
+
+                    <form class="jNice" action="__URL__/update" method="POST">
+                    	<h3>修改栏目</h3>
+                    	<fieldset>
+                    		<p><label>选择要修改的栏目:</label>
+                    		<select name="id" size="1">
+								<volist name="alist" id="vo">
+									<option value="<{$vo['id']}>">
+									<{$vo['name']}></option>
+								</volist>
+							</select>
+                    		</p>
+                    	<p><label>修改后栏目的名字:</label><input type="text" name="name" /></p>
+                    	<button class="" type="submit" name="" id=""><span><span>修改</span></span></button>
+
+                    	</fieldset>
+                    </form>
+
+                </div>
+                <!-- // #main -->
+
+                <div class="clear"></div>
+            </div>
+            <!-- // #container -->
+        </div>
+
+
+ <{/*引入页脚*/}>
+ <include file="./admin/Tpl/Public/footer.html" />

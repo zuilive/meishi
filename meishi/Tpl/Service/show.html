@@ -1,0 +1,40 @@
+<{/*引入头部*/}>
+ <include file="./meishi/Tpl/Public/header.html" />
+
+	<div style="width:980px;text-align:left">
+		<div class="bor1" style="margin:5px 0px;">
+			<img src="__TPUBLIC__/image/ad1.png" style="margin:1px;width:976px;">
+		</div>
+
+
+	<!--右侧-->
+		<div class="r serr">
+		<div style="padding:20px;">
+			<div class="disc_title"><{$list['0']['title']}></div>
+			<div class="disc">
+			<span class="red">E网美食</span>
+			<span>时间：</span><span class="red"><{$list['0']['date']}></span>
+			<span>来源：</span><span class="red"><{$list['0']['from']}></span>
+			<span>点击：</span><span class="red"><{$list['0']['readtime']}></span><span>次</span></div>
+
+			<{$list['0']['content']}>
+   		 </div>
+			<div class="clear"></div>
+		</div>
+		<!--左侧-->
+		<div class="l ser">
+			<div style="height:44px;"></div>
+			<div  class="ser1"><a href=""></a></div>
+			<div  class="ser2"><a href=""></a></div>
+			<div  class="ser3"><a href=""></a></div>
+			<div  class="ser4"><a href=""></a></div>
+			<div  class="ser5"><a href=""></a></div>
+		</div>
+	<div class="clear"></div>
+	<div class="bor1" style="margin:5px 0px;">
+			<img src="__TPUBLIC__/image/ad1.png" style="margin:1px;width:976px;">
+		</div>
+	</div>
+
+ <{/*引入页脚*/}>
+ <include file="./meishi/Tpl/Public/footer.html" />

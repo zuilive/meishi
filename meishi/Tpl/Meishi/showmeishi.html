@@ -1,0 +1,115 @@
+<{/*引入头部*/}>
+ <include file="./meishi/Tpl/Public/header.html" />
+
+ 	<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+	<script type="text/javascript" id="bdshell_js"></script>
+	<script type="text/javascript">
+		document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+	</script>
+
+	<!--内容开始-->
+	<div style="width:980px;text-align:left">
+		<div class="bor1" style="margin:5px 0px;">
+			<img src="__TPUBLIC__/image/ad1.png" style="margin:1px;width:976px;">
+		</div>
+	<!--左侧内容-->
+		<div  class="dis_css">
+			<div class="dis_content">
+				<div style="line-height:30px;" >
+					<a href="__APP__">首页&nbsp;&gt;</a>
+					<a href="__URL__">安徽美食&nbsp;&gt;</a>
+					<a href="__URL__/more?pid=<{$foodsort['0']['id']}>"><{$foodsort['0']['name']}>&nbsp;&gt;</a>
+					<span><{$list['0']['name']}></span>
+				</div>
+
+				<div class="disc_title"><{$list['0']['name']}></div>
+				<div  class="disc">
+					<span class="red">E网美食</span>
+					<span>类型：</span>
+					<span class="red"><{$list['0']['type']}></span>
+					<span>口味：</span>
+					<span class="red"><{$list['0']['taste']}></span>
+					<span>工艺：</span>
+					<span class="red"><{$list['0']['crafts']}></span>
+					<span>主材料：</span>
+					<span class="red"><{$list['0']['material']}></span>
+					<span>产地：</span>
+					<span class="red"><{$list['0']['place']}></span>
+				</div>
+				<div class="dis_hr"></div>
+				<div class="dis_con">
+					<div class="dis_con_img" ><img src="__IPUBLIC__/s_<{$list['0']['image']}>" ></div>
+						<{$list['0']['info']}>
+					</div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="dis_content1 bor3" >
+				<div class="dis_bor_title">相关美食推荐</div>
+				<volist name="aboutfood" id="vo">
+					<a href="__URL__/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>" class="dis_bor_a">
+						<div class="dis_bor_img" ><img src="__IPUBLIC__/s_<{$vo['image']}>" ></div>
+						<div class="dis_bor_disc"><{$vo['name']}></div>
+					</a>
+				</volist>
+
+					<div class="clear"></div>
+				</div>
+      </div>
+
+	<!--右侧内容-->
+		<div style="float:right;width:252px;">
+			<div><img src="image/ad_11.gif" style="width:250px"></div>
+			<div class="fenxiang">分享，让更多人读到</div>
+			<div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare">
+				<a class="bds_qzone"></a>
+				<a class="bds_tsina"></a>
+				<a class="bds_tqq"></a>
+				<a class="bds_renren"></a>
+
+				<span class="bds_more">更多</span>
+				<a class="shareCount"></a>
+			</div>
+
+			<div style="float:left;margin:2px 1px 0px 0px;text-align:left;" class="bor3">
+			<a href="__URL__/more?pid=<{$foodsort['0']['id']}>" class="ah_list_title" style="width:250px;">
+			<span style="padding-left:15px;font-size:15px;">热门<{$foodsort['0']['name']}>排行</span>
+			<span>更多</span>
+			</a>
+
+			<{/*展示页面，右侧排行*/}>
+			<volist name="pfood" id="vo" offset="0" length="3">
+				<a href="__URL__/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>" class="ah_list_img" >
+					<div class="ah_list_b" style="top:17px"><{$i}></div>
+					<div style="float:left"><img src="__IPUBLIC__/m_<{$vo['image']}>"> </div>
+					<div class="ah_list_nt" ><{$vo['name']}></div>
+					<div class="clear"></div>
+				</a>
+			</volist>
+
+			<volist name="pfood" id="vo" offset="3" length="4">
+				<a href="__URL__/showmeishi?pid=<{$vo['pid']}>&id=<{$vo['id']}>" class="ah_list_bor">
+					<div class="ah_list_b"><{$i+3}></div>
+					<div class="ah_list_nts" ><{$vo['name']}></div>
+					<div class="clear"></div>
+				</a>
+			</volist>
+
+
+		</div>
+		<div class="clear"></div>
+			<div style="margin-top:5px;border:1px solid #f8f8f8">
+				<img src="image/dazhe3.gif">
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="bor1" style="margin:5px 0px;">
+			<img src="__TPUBLIC__/image/ad1.png" style="margin:1px;width:976px;">
+		</div>
+	</div>
+	<!--底部-->
+	<div style="width:980px;text-align:left">
+
+
+ <{/*引入页脚*/}>
+ <include file="./meishi/Tpl/Public/footer.html" />

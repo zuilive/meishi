@@ -1,0 +1,60 @@
+ <{/*引入头部*/}>
+ <include file="./admin/Tpl/Public/header.html" />
+	 <{/*引入kindeditor*/}>
+	<script charset="utf-8" src="__PUBLIC__/Js/kindeditor/kindeditor.js"></script>
+	<script charset="utf-8" src="__PUBLIC__/Js/kindeditor/lang/zh_CN.js"></script>
+	<script>
+	        var editor;
+	        KindEditor.ready(function(K) {
+	                editor = K.create('#editor_id',{
+	                	resizeType:2,
+	                	uploadJson:'__PUBLIC__/Js/kindeditor/php/upload_json.php',
+	                	width:'668px',
+	                	height:'400px',
+	                });
+	        });
+	</script>
+<div id="containerHolder">
+			<div id="container">
+        		<div id="sidebar">
+                	<include file="./admin/Tpl/Public/servicesider.html" />
+                    <!-- // .sideNav -->
+                </div>
+                <!-- // #sidebar -->
+
+                <!-- h2 stays for breadcrumbs -->
+                <h2><a href="#">服务大厅管理</a> » <a class="active" href="#">添加新闻</a></h2>
+
+                <div id="main">
+                	<form class="jNice" action="__URL__/add?id=<{$id}>" method="POST">
+
+					<h3></h3>
+                    	<fieldset>
+                        	<p><label>标题:</label><input type="text" class="text-long" name="title"  value="<{$list['0']['title']}>"></p>
+                        	<p><label>来源:</label><input type="text" class="text-long" name="from"  value="<{$list['0']['from']}>"></p>
+
+                             <p><label>栏目:</label>
+                           <select name="pid" size="1">
+							<volist name="sort" id="vo">
+								<option value="<{$vo['id']}>"> <{$vo['name']}>
+								</option>
+							</volist>
+							</select>
+                            </p>
+
+							<p><label>内容:</label><textarea name="content" id="editor_id" ><{$list['0']['content']}></textarea></p>
+                            <button class="" type="submit" name="" id=""><span><span>提交</span></span></button>
+                        </fieldset>
+                    </form>
+                </div>
+                <!-- // #main -->
+
+                <div class="clear"></div>
+            </div>
+            <!-- // #container -->
+        </div>
+
+
+
+ <{/*引入页脚*/}>
+ <include file="./admin/Tpl/Public/footer.html" />
